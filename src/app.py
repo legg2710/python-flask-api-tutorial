@@ -1,15 +1,17 @@
+import flask
+import json
 from flask import Flask
 app = Flask(__name__)
 
+todos = [
+    { "label": "Task1", "done": False },
+]
+
 @app.route('/todos', methods=['GET'])
 def hello_world():
-
-    todos = {"label": "task1", "done": False}
-
+    global todos
     json_text = flask.jsonify(todos)
     return json_text
 
-    todos = {"label": "task1", "done": False}
-
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=3245, debug=True)
+    app.run(host='0.0.0.0', port=3245, debug=True)
